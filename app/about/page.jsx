@@ -18,18 +18,18 @@ export default function About() {
         <section className="space-y-6">
           <p className="text-gray-700 text-lg leading-relaxed">
             Our Task Manager makes organizing your tasks a breeze. Effortlessly
-            add, delete, or update the status of each task to mark it as "done" or
-            "todo" — all from a single, intuitive platform.
+            add, delete, or update the status of each task to mark it as &quot;done&quot; or
+            &quot;todo&quot; — all from a single, intuitive platform.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
-            But that's not all: with Copilot's intelligent assistance, you can
+            But that&apos;s not all: with Copilot&apos;s intelligent assistance, you can
             manage tasks using simple, natural language. Need to add tasks for the
-            week? Just ask! For example, say “Add tasks for seven days of the week
-            to make dinner, one for each day,” and watch as Copilot creates
+            week? Just ask! For example, say &quot;Add tasks for seven days of the week
+            to make dinner, one for each day,&quot; and watch as Copilot creates
             separate tasks for each day. 
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
-            Want to tidy up your list? Use prompts like “Delete task (ID)” to
+            Want to tidy up your list? Use prompts like &quot;Delete task (ID)&quot; to
             remove specific tasks instantly. With these AI-powered features, you
             can enjoy a more organized, efficient approach to managing your daily
             tasks.
