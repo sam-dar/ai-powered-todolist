@@ -18,36 +18,6 @@ export const TasksProvider = ({ children }) => {
     value: JSON.stringify(tasks),
   });
 
-  //    // Define Copilot action
-  //    useCopilotAction({
-  //     name: "deleteTodoItem",
-  //     description: "Delete a new todo item from the list",
-  //     parameters: [
-  //       {
-  //         name: "todoIndex",
-  //         type: "number",
-  //         description: "The index of the todo item to delete",
-  //         required: true,
-  //       }
-  //     ],
-  //     handler: async ({ todoIndex }) => {
-  //       deleteTodo(todoIndex);
-  //     },
-  //   });
-
-  // // Function to handle adding new todo
-  // const addTodo = (todoText) => {
-  //   if (todoText.trim() !== "") {
-  //     setTodos([...todos, todoText]);
-  //     setNewTodo(""); // Clear input after adding
-  //   }
-  // };
-
-  // // Function to handle deleting todo
-  // const deleteTodo = (indexToDelete) => {
-  //   setTodos(todos.filter((_, index) => index !== indexToDelete));
-  // };
-
 
   useCopilotAction({
     name: "addTask",
@@ -64,21 +34,6 @@ export const TasksProvider = ({ children }) => {
       addTask(title);
     }
   });
-      //  useCopilotAction({
-  //   name: "addTodoItem",
-  //   description: "Add a new todo item to the list",
-  //   parameters: [
-  //     {
-  //       name: "todoText",
-  //       type: "string",
-  //       description: "The text of the todo item to add",
-  //       required: true,
-  //     }
-  //   ],
-  //   handler: async ({ todoText }) => {
-  //     addTodo(todoText);
-  //   },
-  // });
 
 
   useCopilotAction({
