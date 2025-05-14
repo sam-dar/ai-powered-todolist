@@ -1,64 +1,45 @@
-import {
-    CopilotRuntime,
-    GoogleGenerativeAIAdapter,
-    copilotRuntimeNextJSAppRouterEndpoint,
-  } from '@copilotkit/runtime';
-  import { NextRequest } from 'next/server';
-  const { GoogleGenerativeAI } = require("@google/generative-ai");
-  // const genAI = new GoogleGenerativeAI(process.env["GOOGLE_API_KEY"]);
-    const genAI = new GoogleGenerativeAI("AIzaSyDaUCmSj37GGtFuPMox4hvTso_XADrSBoE");
+import { CopilotRuntime, GoogleGenerativeAIAdapter, copilotRuntimeNextJSAppRouterEndpoint } from "@copilotkit/runtime";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { NextRequest } from 'next/server';
 
-  
+// Initialize the Google Generative AI client
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY || "");
 
- const runtime = new CopilotRuntime();
-  
-   const model = genAI.getGenerativeModel({
-    model: "gemini-pro"
- });
-  
-   const serviceAdapter = new GoogleGenerativeAIAdapter({ model });
-  
-   
-//   const genAI = new GoogleGenerativeAI({ apiKey: process.env.GOOGLE_API_KEY });
-// const serviceAdapter = new GoogleGenerativeAIAdapter({
-//   model: "gemini-1.5-pro",
-//   generativeAI: genAI
-// });
-  
-//   const runtime = new CopilotRuntime();
-   
+// Create the runtime
+const runtime = new CopilotRuntime();
+
+// Create the adapter with the Google Generative AI client
+const llmAdapter = new GoogleGenerativeAIAdapter({
+ genAI,
+  model: "gemini-2.0-flash",
+});
+
 export const POST = async (req) => {
-  try {
-    const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
-      runtime,
-      serviceAdapter,
-      endpoint: '/api/copilotkit',
-    });
-    console.log("success getting response:");
+  const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
+    runtime,
+    serviceAdapter: llmAdapter,
+    endpoint: "/api/copilotkit",
+  });
 
-    return await handleRequest(req);
-  } catch (error) {
-    console.error("Error getting response:", error);
-    return new Response("Error handling request", { status: 500 });
-  }
+  return handleRequest(req);
 };
-// CopilotRuntime,
-// OpenAIAdapter,
-// copilotRuntimeNextJSAppRouterEndpoint,
-// } from '@copilotkit/runtime';
-// import OpenAI from 'openai';
-// import { NextRequest } from 'next/server';
+// import {
+//   CopilotRuntime,
+//   OpenAIAdapter,
+//   copilotRuntimeNextJSAppRouterEndpoint,
+// } from "@copilotkit/runtime";
 
-// const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-// const serviceAdapter = new OpenAIAdapter({ openai });
+// import { NextRequest } from "next/server";
+
+// const serviceAdapter = new OpenAIAdapter();
 // const runtime = new CopilotRuntime();
 
 // export const POST = async (req) => {
-// const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
-//   runtime,
-//   serviceAdapter,
-//   endpoint: '/api/copilotkit',
-// });
+//   const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
+//     runtime,
+//     serviceAdapter,
+//     endpoint: "/api/copilotkit",
+//   });
 
-// return handleRequest(req);
+//   return handleRequest(req);
 // };

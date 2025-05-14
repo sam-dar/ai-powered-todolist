@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
+        
         <CopilotKit runtimeUrl="/api/copilotkit">
           {children}
         </CopilotKit>
